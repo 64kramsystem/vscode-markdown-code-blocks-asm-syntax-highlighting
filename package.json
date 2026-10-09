@@ -1,8 +1,8 @@
 {
   "name": "markdown-code-blocks-asm-syntax-highlighting",
-  "displayName": "Markdown Code blocks Assembly Syntax highlighting",
-  "description": "",
-  "version": "0.0.4",
+  "displayName": "Markdown Assembly Code Block Highlighting",
+  "description": "Highlights Assembly code blocks in Markdown with a bundled NASM grammar. No additional extensions required.",
+  "version": "0.1.0",
   "publisher": "64kramsystem",
   "license": "MIT",
   "repository": {
@@ -12,30 +12,49 @@
     "url": "https://github.com/64kramsystem/vscode-markdown-code-blocks-asm-syntax-highlighting/issues"
   },
   "engines": {
-    "vscode": "^1.8.0"
+    "vscode": "^1.141.0"
   },
   "categories": [
-    "Other"
+    "Programming Languages"
   ],
   "contributes": {
     "languages": [
       {
-        "id": "superasm-injection"
+        "id": "markdown-code-blocks-assembly",
+        "aliases": [
+          "Assembly (Markdown code blocks)"
+        ],
+        "configuration": "./language-configuration.json"
       }
     ],
     "grammars": [
       {
-        "language": "superasm-injection",
         "scopeName": "markdown.asm.codeblock",
         "path": "./syntaxes/codeblock_asm.json",
         "injectTo": [
           "text.html.markdown"
         ],
         "embeddedLanguages": {
-          "meta.embedded.block.asm": "asm"
+          "meta.embedded.block.markdown-code-blocks.assembly": "markdown-code-blocks-assembly"
         }
+      },
+      {
+        "language": "markdown-code-blocks-assembly",
+        "scopeName": "source.markdown-code-blocks.assembly",
+        "path": "./syntaxes/nasm.tmLanguage.json"
       }
     ]
   },
-  "dependencies": {}
+  "keywords": [
+    "markdown",
+    "assembly",
+    "nasm"
+  ],
+  "scripts": {
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "vscode-oniguruma": "2.0.1",
+    "vscode-textmate": "9.3.2"
+  }
 }

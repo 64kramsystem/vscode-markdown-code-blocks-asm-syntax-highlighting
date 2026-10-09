@@ -1,23 +1,22 @@
-# VSCode Markdown Code blocks Assembly Syntax highlighting
+# Markdown Assembly Code Block Highlighting
 
-This extension adds Assembly syntax highlighting to Markdown fenced code blocks.
+Highlights `asm` and `nasm` fenced code blocks in the VS Code Markdown editor. Fence names are case-insensitive; backticks and tildes are supported, including blocks in lists and blockquotes.
 
-Code blocks like the following:
+````markdown
+```asm
+mov eax, 42
+; Assembly comment
+```
+````
 
-    ```asm
-    main:
-            mov eax, 0xDEADCAFE
-            int 3
-    ```
+The NASM x86/x64 syntax grammar is bundled. No additional extensions, runtime packages, or extension JavaScript are required. Requires VS Code 1.141 or later.
 
-will be highlighted, like:
+This extension provides editor syntax highlighting, not Markdown preview rendering or language-server features. It does not associate itself with standalone `.asm` files.
 
-![Highlighted block rendering](https://github.com/64kramsystem/vscode-markdown-code-blocks-asm-syntax-highlighting/blob/master/readme_images/hightlighted_block_rendering.png?raw=true)
+## Development
 
-This work based on [Matt Bierner's work](https://github.com/mjbvz/vscode-fenced-code-block-grammar-injection-example).
+Run `npm ci` and `npm test` to test highlighting and Markdown boundaries with VS Code's TextMate engine. Test dependencies are excluded from the extension package.
 
-## Setup
+## Credits
 
-This extension does not add the grammar; it only connects Markdown ASM code blocks to the existing ASM grammar.
-
-For this reason, it requires a preexisting extension that provides the grammar, for example, [nasm x86 syntax highlighting](https://marketplace.visualstudio.com/items?itemName=LucianIrsigler.nasm).
+Based on [Matt Bierner's Markdown grammar injection example](https://github.com/mjbvz/vscode-fenced-code-block-grammar-injection-example). Bundled grammar sources and licenses are recorded in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
