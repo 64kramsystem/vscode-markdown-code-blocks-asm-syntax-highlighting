@@ -3,5 +3,6 @@ node_modules/
 *.vsix
 
 # Shared local agent instructions
-/AGENTS.development.md
-/AGENTS.git.md
+
+AGENTS*.md
+!AGENTS.md
